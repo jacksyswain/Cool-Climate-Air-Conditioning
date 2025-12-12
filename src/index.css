@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --primary: #0EA5E9; /* sky-500 */
+  --dark: #0F172A; /* slate-900 */
+}
+
+body{ background-color: #F8FAFC; }
+
+/* small helpers */
+.container{ @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl; }
