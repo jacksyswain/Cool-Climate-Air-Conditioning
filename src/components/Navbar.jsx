@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { Phone, Mail, MessageCircle } from "lucide-react";
 import logo from "../assets/logo.png";
+import { SITE } from "../data/siteData";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -15,110 +17,100 @@ export default function Navbar() {
 
         {/* LOGO */}
         <Link to="/" className="flex items-center gap-3">
-          <img
-            src={logo}
-            alt="Cool Climate"
-            className="h-10 w-auto object-contain"
-          />
-          <span className="hidden sm:block font-semibold tracking-wide text-white">
+          <img src={logo} alt="Cool Climate" className="h-10 w-auto" />
+          <span className="hidden sm:block font-semibold text-white">
             Cool Climate
           </span>
         </Link>
 
         {/* DESKTOP MENU */}
         <nav className="hidden md:flex items-center gap-6">
-          <NavLink to="/" end className={navLinkClass}>
-            Home
-          </NavLink>
+          <NavLink to="/" end className={navLinkClass}>Home</NavLink>
+          <NavLink to="/services" className={navLinkClass}>Services</NavLink>
+          <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
+          <NavLink to="/about" className={navLinkClass}>About</NavLink>
+          <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
 
-          <NavLink to="/services" className={navLinkClass}>
-            Services
-          </NavLink>
-
-          <NavLink to="/pricing" className={navLinkClass}>
-            Pricing
-          </NavLink>
-
-          <NavLink to="/about" className={navLinkClass}>
-            About
-          </NavLink>
-
-          <NavLink to="/contact" className={navLinkClass}>
-            Contact
-          </NavLink>
-
-          <Link
-            to="/booking"
-            className="ml-3 btn-primary"
-          >
+          <Link to="/booking" className="btn-primary ml-2">
             Book Now
           </Link>
+
+          {/* CONTACT ICONS */}
+          <div className="flex items-center gap-3 ml-3">
+            {/* CALL */}
+            <a
+              href={`tel:${SITE.phone}`}
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+              title="Call us"
+            >
+              <Phone className="w-5 h-5 text-sky-400" />
+            </a>
+
+            {/* WHATSAPP */}
+            <a
+              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
+              target="_blank"
+              rel="noreferrer"
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+              title="WhatsApp"
+            >
+              <MessageCircle className="w-5 h-5 text-green-400" />
+            </a>
+
+            {/* EMAIL */}
+            <a
+              href={`mailto:${SITE.email}`}
+              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+              title="Email"
+            >
+              <Mail className="w-5 h-5 text-sky-300" />
+            </a>
+          </div>
         </nav>
 
-        {/* MOBILE BUTTON */}
+        {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setOpen(!open)}
           className="md:hidden text-white p-2 rounded-lg hover:bg-white/10"
-          aria-label="Toggle menu"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            {open ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          ☰
         </button>
       </div>
 
-      {/* MOBILE DRAWER */}
+      {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden bg-black/70 backdrop-blur-xl border-t border-white/10">
           <div className="flex flex-col p-4 space-y-3 text-white">
 
-            <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>
-              Home
-            </NavLink>
-
-            <NavLink onClick={() => setOpen(false)} to="/services" className={navLinkClass}>
-              Services
-            </NavLink>
-
-            <NavLink onClick={() => setOpen(false)} to="/pricing" className={navLinkClass}>
-              Pricing
-            </NavLink>
-
-            <NavLink onClick={() => setOpen(false)} to="/about" className={navLinkClass}>
-              About
-            </NavLink>
-
-            <NavLink onClick={() => setOpen(false)} to="/contact" className={navLinkClass}>
-              Contact
-            </NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>Home</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/services" className={navLinkClass}>Services</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/pricing" className={navLinkClass}>Pricing</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/about" className={navLinkClass}>About</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/contact" className={navLinkClass}>Contact</NavLink>
 
             <Link
               to="/booking"
               onClick={() => setOpen(false)}
-              className="btn-primary mt-2 text-center"
+              className="btn-primary text-center"
             >
               Book Now
             </Link>
+
+            {/* MOBILE CONTACT ICONS */}
+            <div className="flex gap-4 pt-3">
+              <a href={`tel:${SITE.phone}`} className="text-sky-400">📞 Call</a>
+              <a
+                href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-green-400"
+              >
+                💬 WhatsApp
+              </a>
+              <a href={`mailto:${SITE.email}`} className="text-blue-400">
+                ✉️ Email
+              </a>
+            </div>
           </div>
         </div>
       )}

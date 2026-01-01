@@ -1,9 +1,9 @@
 import React from "react";
-import ToolBackground from "./components/ui/ToolBackground";
 import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Background from "./components/ui/Background";
+import ClimateBackground from "./components/ui/ClimateBackground";
 
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -15,8 +15,8 @@ import Booking from "./pages/Booking";
 export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
-      <Background />
-       <ToolBackground />
+      <ClimateBackground />
+
       <Navbar />
 
       <main className="relative z-10">
