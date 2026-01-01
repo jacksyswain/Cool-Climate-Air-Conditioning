@@ -1,35 +1,19 @@
-import React from 'react'
-import { SERVICES } from '../data/siteData'
+import React from "react";
+import { SERVICES } from "../data/siteData";
+import ServiceCard from "../components/ServiceCard";
 
 export default function Services() {
   return (
-    <div className="bg-[#4A4F55] text-[#F2E8C9] min-h-screen py-16">
-      <div className="container">
+    <div className="container py-20">
+      <h1 className="text-4xl font-bold text-white mb-10">
+        Our Services
+      </h1>
 
-        <h1 className="text-3xl font-semibold mb-10 text-[#D4AF37]">
-          Our Services
-        </h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          {SERVICES.map((s) => (
-            <div
-              key={s.id}
-              className="p-6 bg-[#5A6066] border border-[#737A82] rounded-lg shadow-md hover:shadow-xl transition"
-            >
-              <div className="text-xl font-semibold mb-2 text-[#F2E8C9]">
-                {s.title}
-              </div>
-
-              <div className="text-sm opacity-90 leading-relaxed">
-                {s.desc}
-              </div>
-            </div>
-          ))}
-
-        </div>
-
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {SERVICES.map((s) => (
+          <ServiceCard key={s.id} title={s.title} desc={s.desc} />
+        ))}
       </div>
     </div>
-  )
+  );
 }

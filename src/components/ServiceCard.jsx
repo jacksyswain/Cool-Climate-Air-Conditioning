@@ -1,9 +1,19 @@
-import React from 'react'
-export default function ServiceCard({title, desc}){
+import React from "react";
+
+export default function ServiceCard({ title, desc }) {
   return (
-    <div className="p-6 bg-white rounded-lg shadow hover:shadow-md transition">
-      <div className="text-lg font-semibold mb-2">{title}</div>
-      <div className="text-sm text-slate-600">{desc}</div>
+    <div className="group glass p-6 transition hover:scale-[1.03]">
+      <div className="mb-3 text-lg font-semibold text-white group-hover:text-sky-400 transition">
+        {title}
+      </div>
+
+      <p className="text-sm text-gray-300 leading-relaxed">
+        {desc}
+      </p>
+
+      <div className="mt-4 text-sm text-sky-400 opacity-0 group-hover:opacity-100 transition">
+        Learn more →
+      </div>
     </div>
-  )
+  );
 }

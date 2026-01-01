@@ -2,12 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root{
-  --primary: #0EA5E9; /* sky-500 */
-  --dark: #0F172A; /* slate-900 */
+/* ---------- Base ---------- */
+html {
+  scroll-behavior: smooth;
 }
 
-body{ background-color: #F8FAFC; }
+body {
+  background: #0b1220;
+  color: #e5e7eb;
+  font-family: ui-sans-serif, system-ui, -apple-system;
+}
 
-/* small helpers */
-.container{ @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl; }
+/* Layout helper */
+.container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+/* Glass card */
+.glass {
+  @apply backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl shadow-lg;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply px-6 py-3 rounded-xl font-semibold text-black
+  bg-gradient-to-r from-sky-400 to-emerald-400
+  hover:from-emerald-400 hover:to-sky-400
+  transition-all duration-300 shadow-lg;
+}
+
+.btn-outline {
+  @apply px-6 py-3 rounded-xl border border-white/30
+  hover:bg-white/10 transition;
+}
+
+/* Animated blobs */
+.blob {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 9999px;
+  filter: blur(90px);
+  animation: float 14s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-60px); }
+}

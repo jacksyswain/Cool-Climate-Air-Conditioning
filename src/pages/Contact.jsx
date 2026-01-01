@@ -1,74 +1,120 @@
-import React from 'react'
-import { SITE } from '../data/siteData'
+import React from "react";
+import { SITE } from "../data/siteData";
 
 export default function Contact() {
   return (
-    <div className="bg-[#4A4F55] text-[#F2E8C9] min-h-screen py-16">
-      <div className="container">
-
-        <h1 className="text-3xl font-semibold mb-8 text-[#D4AF37]">
+    <div className="container py-20">
+      {/* HEADER */}
+      <div className="mb-12">
+        <h1 className="text-4xl font-bold text-white mb-3">
           Contact Us
         </h1>
+        <p className="text-gray-400 max-w-xl">
+          Have questions or need help? Reach out to us anytime — we’re happy to assist you.
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid md:grid-cols-2 gap-10">
 
-          {/* CONTACT DETAILS */}
-          <div className="p-6 bg-[#5A6066] border border-[#737A82] rounded-lg shadow-md">
-            
-            <div className="font-semibold mb-3 text-[#D4AF37]">Address</div>
-            <div className="text-sm mb-5">{SITE.address}</div>
+        {/* CONTACT INFO */}
+        <div className="glass p-8">
+          <h2 className="text-xl font-semibold text-white mb-6">
+            Get in Touch
+          </h2>
 
-            <div className="font-semibold mb-2 text-[#D4AF37]">Phone</div>
-            <div className="text-sm mb-5">{SITE.phone}</div>
+          <div className="space-y-4 text-gray-300">
 
-            <div className="font-semibold mb-2 text-[#D4AF37]">Email</div>
-            <div className="text-sm">{SITE.email}</div>
-          </div>
+            <div>
+              <p className="text-sm text-gray-400">Address</p>
+              <p>{SITE.address}</p>
+            </div>
 
-          {/* CONTACT FORM */}
-          <div className="p-6 bg-[#5A6066] border border-[#737A82] rounded-lg shadow-md">
-            <div className="font-semibold mb-3 text-[#D4AF37]">Send a Message</div>
-
-            <form
-              onSubmit={(e) => {
-                e.preventDefault()
-                alert('This form is frontend only. Connect backend later.')
-              }}
-              className="flex flex-col gap-4"
-            >
-              <input
-                required
-                placeholder="Your Name"
-                className="p-3 rounded bg-[#4A4F55] border border-[#737A82] text-[#F2E8C9]"
-              />
-
-              <input
-                required
-                placeholder="Phone"
-                className="p-3 rounded bg-[#4A4F55] border border-[#737A82] text-[#F2E8C9]"
-              />
-
-              <input
-                placeholder="Email"
-                className="p-3 rounded bg-[#4A4F55] border border-[#737A82] text-[#F2E8C9]"
-              />
-
-              <textarea
-                placeholder="Message"
-                rows={4}
-                className="p-3 rounded bg-[#4A4F55] border border-[#737A82] text-[#F2E8C9]"
-              ></textarea>
-
-              <button
-                className="px-6 py-3 bg-[#D4AF37] text-black font-semibold rounded-lg hover:bg-[#E3C15A] transition w-max"
+            <div>
+              <p className="text-sm text-gray-400">Phone</p>
+              <a
+                href={`tel:${SITE.phone}`}
+                className="text-sky-400 hover:underline"
               >
-                Send Message
-              </button>
-            </form>
+                {SITE.phone}
+              </a>
+            </div>
+
+            <div>
+              <p className="text-sm text-gray-400">Email</p>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="text-sky-400 hover:underline"
+              >
+                {SITE.email}
+              </a>
+            </div>
+
+            <div>
+              <p className="text-sm text-gray-400">WhatsApp</p>
+              <a
+                href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="text-green-400 hover:underline"
+              >
+                Chat on WhatsApp
+              </a>
+            </div>
           </div>
 
+          {/* MAP PLACEHOLDER */}
+          <div className="mt-8 glass p-4 text-center text-gray-400">
+            Google Map integration can be added here
+          </div>
         </div>
+
+        {/* CONTACT FORM */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            alert("Message submitted (frontend only). Email integration coming next.");
+          }}
+          className="glass p-8 space-y-5"
+        >
+          <h2 className="text-xl font-semibold text-white">
+            Send a Message
+          </h2>
+
+          <input
+            type="text"
+            placeholder="Your Name"
+            required
+            className="w-full p-3 rounded bg-black/40 border border-white/20 text-white"
+          />
+
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="w-full p-3 rounded bg-black/40 border border-white/20 text-white"
+          />
+
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            required
+            className="w-full p-3 rounded bg-black/40 border border-white/20 text-white"
+          />
+
+          <textarea
+            rows="4"
+            placeholder="Your Message"
+            className="w-full p-3 rounded bg-black/40 border border-white/20 text-white"
+          />
+
+          <button type="submit" className="btn-primary w-full">
+            Send Message
+          </button>
+
+          <p className="text-xs text-gray-400 text-center">
+            We usually respond within 30 minutes during working hours.
+          </p>
+        </form>
       </div>
     </div>
-  )
+  );
 }

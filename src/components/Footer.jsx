@@ -1,44 +1,64 @@
-import React from 'react'
-import { SITE } from '../data/siteData'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { SITE } from "../data/siteData";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1F24] text-[#F2E8C9] pt-12 pb-6">
-      <div className="container grid grid-cols-1 md:grid-cols-3 gap-10 pb-8">
+    <footer className="relative mt-20 border-t border-white/10 bg-black/50 backdrop-blur-xl">
+      <div className="container py-12 grid grid-cols-1 md:grid-cols-3 gap-10 text-gray-300">
 
-        {/* Company Info */}
+        {/* BRAND */}
         <div>
-          <div className="font-bold text-xl text-[#D4AF37]">
+          <h3 className="text-xl font-semibold text-white">
             {SITE.companyName}
-          </div>
-          <div className="text-sm mt-3">{SITE.tagline}</div>
-          <div className="mt-4 text-sm">{SITE.address}</div>
+          </h3>
+          <p className="mt-3 text-sm text-gray-400 leading-relaxed">
+            {SITE.tagline}
+          </p>
+
+          <p className="mt-4 text-sm text-gray-400">
+            📍 {SITE.address}
+          </p>
         </div>
 
-        {/* Quick Links */}
+        {/* LINKS */}
         <div>
-          <div className="font-semibold text-[#D4AF37]">Quick Links</div>
-          <div className="mt-3 flex flex-col gap-2 text-sm">
-            <Link to="/" className="hover:text-[#E8C558] transition">Home</Link>
-            <Link to="/services" className="hover:text-[#E8C558] transition">Services</Link>
-            <Link to="/pricing" className="hover:text-[#E8C558] transition">Pricing</Link>
-            <Link to="/booking" className="hover:text-[#E8C558] transition">Book</Link>
-          </div>
+          <h4 className="text-lg font-semibold text-white mb-4">
+            Quick Links
+          </h4>
+
+          <ul className="space-y-2 text-sm">
+            <li><Link to="/" className="hover:text-sky-400 transition">Home</Link></li>
+            <li><Link to="/services" className="hover:text-sky-400 transition">Services</Link></li>
+            <li><Link to="/pricing" className="hover:text-sky-400 transition">Pricing</Link></li>
+            <li><Link to="/about" className="hover:text-sky-400 transition">About</Link></li>
+            <li><Link to="/contact" className="hover:text-sky-400 transition">Contact</Link></li>
+          </ul>
         </div>
 
-        {/* Contact Info */}
+        {/* CONTACT */}
         <div>
-          <div className="font-semibold text-[#D4AF37]">Contact</div>
-          <div className="mt-3 text-sm">Phone: {SITE.phone}</div>
-          <div className="text-sm">Email: {SITE.email}</div>
+          <h4 className="text-lg font-semibold text-white mb-4">
+            Contact
+          </h4>
+
+          <p className="text-sm mb-2">📞 {SITE.phone}</p>
+          <p className="text-sm mb-2">✉️ {SITE.email}</p>
+
+          <a
+            href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-block mt-4 btn-primary"
+          >
+            WhatsApp Us
+          </a>
         </div>
       </div>
 
-      {/* COPYRIGHT – Always Centered */}
-      <div className="text-center text-xs text-[#E8C558] border-t border-[#333] pt-4">
-        © {new Date().getFullYear()} {SITE.companyName}. All Rights Reserved.
+      <div className="border-t border-white/10 py-4 text-center text-xs text-gray-400">
+        © {new Date().getFullYear()} {SITE.companyName}. All rights reserved.
       </div>
     </footer>
-  )
+  );
 }

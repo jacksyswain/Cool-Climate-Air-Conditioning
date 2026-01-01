@@ -1,120 +1,127 @@
-import React, {useState} from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { SITE } from '../data/siteData'
-import logo from "../assets/logo.png"
+import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
 
-export default function Navbar(){
-  const [open, setOpen] = useState(false)
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const navLinkClass = ({ isActive }) =>
+    `relative px-3 py-2 text-sm font-medium transition
+     ${isActive ? "text-sky-400" : "text-gray-200 hover:text-white"}`;
+
   return (
-    <header className="bg-[#1A1F24] shadow-lg sticky top-0 z-50">
-  <div className="container flex items-center justify-between h-16">
-    <Link to='/' className="flex items-center gap-3">
-      <img 
-        src={logo}
-        alt="Cool Climate Logo"
-        className="w-16 h-16 object-contain"
-      />
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
+      <div className="container flex items-center justify-between h-16">
 
-     
-    </Link>
-
-    {/* Desktop Menu */}
-    <nav className="hidden md:flex items-center gap-6 text-[#F2E8C9]">
-      <NavLink 
-        to="/"
-        end
-        className={({isActive}) => 
-          isActive 
-            ? "text-[#D4AF37] font-medium" 
-            : "hover:text-[#E8C558] transition"
-        }
-      >
-        Home
-      </NavLink>
-
-      <NavLink 
-        to="/services"
-        className={({isActive}) => 
-          isActive 
-            ? "text-[#D4AF37] font-medium" 
-            : "hover:text-[#E8C558] transition"
-        }
-      >
-        Services
-      </NavLink>
-
-      <NavLink 
-        to="/pricing"
-        className={({isActive}) => 
-          isActive 
-            ? "text-[#D4AF37] font-medium" 
-            : "hover:text-[#E8C558] transition"
-        }
-      >
-        Pricing
-      </NavLink>
-
-      <NavLink 
-        to="/about"
-        className={({isActive}) => 
-          isActive 
-            ? "text-[#D4AF37] font-medium" 
-            : "hover:text-[#E8C558] transition"
-        }
-      >
-        About
-      </NavLink>
-
-      <NavLink 
-        to="/contact"
-        className={({isActive}) => 
-          isActive 
-            ? "text-[#D4AF37] font-medium" 
-            : "hover:text-[#E8C558] transition"
-        }
-      >
-        Contact
-      </NavLink>
-
-      <Link 
-        to="/booking"
-        className="ml-4 px-5 py-2 bg-[#D4AF37] text-black font-semibold rounded-lg hover:bg-[#E8C558] transition"
-      >
-        Book Now
-      </Link>
-    </nav>
-
-    {/* Mobile Menu Button */}
-    <div className="md:hidden">
-      <button onClick={()=>setOpen(!open)} className="p-2 text-[#F2E8C9]">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none"
-          viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-            d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
-
-  {/* Mobile Dropdown */}
-  {open && (
-    <div className="md:hidden bg-[#1A1F24] border-t border-[#333]">
-      <div className="flex flex-col p-4 gap-4 text-[#F2E8C9]">
-        <Link to="/" className="hover:text-[#E8C558]">Home</Link>
-        <Link to="/services" className="hover:text-[#E8C558]">Services</Link>
-        <Link to="/pricing" className="hover:text-[#E8C558]">Pricing</Link>
-        <Link to="/about" className="hover:text-[#E8C558]">About</Link>
-        <Link to="/contact" className="hover:text-[#E8C558]">Contact</Link>
-        <Link 
-          to="/booking"
-          className="mt-2 px-4 py-2 bg-[#D4AF37] text-black rounded hover:bg-[#E8C558]"
-        >
-          Book Now
+        {/* LOGO */}
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt="Cool Climate"
+            className="h-10 w-auto object-contain"
+          />
+          <span className="hidden sm:block font-semibold tracking-wide text-white">
+            Cool Climate
+          </span>
         </Link>
-      </div>
-    </div>
-  )}
-</header>
 
-  )
+        {/* DESKTOP MENU */}
+        <nav className="hidden md:flex items-center gap-6">
+          <NavLink to="/" end className={navLinkClass}>
+            Home
+          </NavLink>
+
+          <NavLink to="/services" className={navLinkClass}>
+            Services
+          </NavLink>
+
+          <NavLink to="/pricing" className={navLinkClass}>
+            Pricing
+          </NavLink>
+
+          <NavLink to="/about" className={navLinkClass}>
+            About
+          </NavLink>
+
+          <NavLink to="/contact" className={navLinkClass}>
+            Contact
+          </NavLink>
+
+          <Link
+            to="/booking"
+            className="ml-3 btn-primary"
+          >
+            Book Now
+          </Link>
+        </nav>
+
+        {/* MOBILE BUTTON */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10"
+          aria-label="Toggle menu"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            {open ? (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            ) : (
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* MOBILE DRAWER */}
+      {open && (
+        <div className="md:hidden bg-black/70 backdrop-blur-xl border-t border-white/10">
+          <div className="flex flex-col p-4 space-y-3 text-white">
+
+            <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>
+              Home
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/services" className={navLinkClass}>
+              Services
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/pricing" className={navLinkClass}>
+              Pricing
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/about" className={navLinkClass}>
+              About
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/contact" className={navLinkClass}>
+              Contact
+            </NavLink>
+
+            <Link
+              to="/booking"
+              onClick={() => setOpen(false)}
+              className="btn-primary mt-2 text-center"
+            >
+              Book Now
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
+  );
 }
