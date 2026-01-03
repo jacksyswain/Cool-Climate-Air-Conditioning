@@ -24,7 +24,7 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
 
-  /* Auto hero slide */
+  /* Auto slider */
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) =>
@@ -89,54 +89,52 @@ export default function Home() {
       </section>
 
       {/* ================= FULL WIDTH IMAGE SLIDER ================= */}
-    <section className="w-full py-12 flex justify-center">
-  <div className="relative w-full md:w-[80%] h-screen md:h-[70vh] overflow-hidden md:rounded-2xl shadow-xl">
+      <section className="w-full py-12 flex justify-center">
+        <div className="relative w-full md:w-[80%] h-screen md:h-[70vh] overflow-hidden md:rounded-2xl shadow-xl">
 
-    {heroSlides.map((slide, i) => (
-      <div
-        key={`slide-${i}`}
-        className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${
-          i === currentIndex ? "opacity-100" : "opacity-0"
-        }`}
-      >
-        {/* 🔹 BACKGROUND FILL (no blank space) */}
-        <img
-          src={slide.img}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
-        />
+          {heroSlides.map((slide, i) => (
+            <div
+              key={`slide-${i}`}
+              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${
+                i === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {/* Background fill (no blank space) */}
+              <img
+                src={slide.img}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
+              />
 
-        {/* 🔹 DARK OVERLAY */}
-        <div className="absolute inset-0 bg-black/40" />
+              {/* Dark overlay */}
+              <div className="absolute inset-0 bg-black/40" />
 
-        {/* 🔹 FOREGROUND IMAGE (full, no crop) */}
-        <div className="relative z-10 w-full h-full flex items-center justify-center">
-          <img
-            src={slide.img}
-            alt={slide.text}
-            className="max-w-full max-h-full object-contain"
-          />
+              {/* Foreground image (fully visible) */}
+              <div className="relative z-10 w-full h-full flex items-center justify-center">
+                <img
+                  src={slide.img}
+                  alt={slide.text}
+                  className="max-w-full max-h-full object-contain"
+                />
+              </div>
+
+              {/* Text */}
+              <div className="absolute inset-0 z-20 flex items-end justify-center pb-10">
+                <div className="bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl mx-4">
+                  <h3 className="text-white text-lg md:text-3xl font-semibold text-center">
+                    {slide.text}
+                  </h3>
+                </div>
+              </div>
+            </div>
+          ))}
+
         </div>
-
-        {/* 🔹 TEXT */}
-        <div className="absolute inset-0 z-20 flex items-end justify-center pb-10">
-          <div className="bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl mx-4">
-            <h3 className="text-white text-lg md:text-3xl font-semibold text-center">
-              {slide.text}
-            </h3>
-          </div>
-        </div>
-      </div>
-    ))}
-
-  </div>
-</section>
-
-
+      </section>
 
       {/* ================= SERVICES ================= */}
       <section className="container py-20">
-        <h2 className="text-3xl font-semibold text-main mb-10">
+        <h2 className="text-3xl font-semibold text-main mb-10 text-center">
           Our Services
         </h2>
 
@@ -186,6 +184,61 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* ================= WHY US ================= */}
+      <section className="border-y border-[var(--border-soft)] py-20">
+        <div className="container">
+          <h3 className="text-3xl font-semibold text-main mb-10 text-center">
+            Why Choose Us
+          </h3>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              "Same Day Service",
+              "Certified Technicians",
+              "Transparent Pricing",
+              "Satisfaction Guaranteed",
+            ].map((item, i) => (
+              <div
+                key={`why-${i}`}
+                className="card p-6 text-center hover:scale-105 transition-transform"
+              >
+                <span className="text-accent font-semibold">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= TESTIMONIALS ================= */}
+      <section className="container py-20 overflow-hidden">
+        <h3 className="text-3xl font-semibold text-main mb-10 text-center">
+          What Customers Say
+        </h3>
+
+        <div className="flex gap-6 animate-marquee">
+          {[
+            "Great service and fast response",
+            "Affordable pricing and honest work",
+            "Very neat foam jet cleaning",
+            "Cooling improved immediately",
+            "Professional and polite technicians",
+            "Great service and fast response",
+            "Affordable pricing and honest work",
+            "Very neat foam jet cleaning",
+            "Cooling improved immediately",
+            "Professional and polite technicians",
+          ].map((text, i) => (
+            <div
+              key={`review-${i}`}
+              className="min-w-[280px] md:min-w-[340px] card p-6"
+            >
+              <p className="text-muted text-sm mb-3">“{text}”</p>
+              <p className="text-accent font-semibold">— Customer</p>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* ================= CTA ================= */}
       <section className="border-t border-[var(--border-soft)] py-14">
