@@ -1,9 +1,11 @@
 import React from "react";
 
 const PRICING = [
-  { id: 1, title: "AC Servicing", price: "₹499" },
-  { id: 2, title: "AC Installation", price: "₹999" },
-  { id: 3, title: "Gas Refilling", price: "₹1,999+" },
+  { id: 1, title: "AC Inspection", price: "249" },
+  { id: 2, title: "Foam Jet AC Servicing", price: "₹499" },
+  { id: 3, title: "AC Installation", price: "₹1,499" },
+  { id: 4, title: "AC Uninstallation", price: "₹799" },
+  { id: 5, title: "Gas Refilling", price: "₹2,499+" },
 ];
 
 export default function Pricing() {

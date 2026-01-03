@@ -106,7 +106,7 @@ export default function Home() {
 
                 <ul className="space-y-3 text-center text-2xl">
                   {[
-                    "Split AC Service – ₹499",
+                    "Foam jet Service – ₹499",
                     " AC uninstall – ₹799",
 
                     "Installation – ₹1,499",
