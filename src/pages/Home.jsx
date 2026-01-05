@@ -2,6 +2,21 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { SITE, SERVICES } from "../data/siteData";
 import pricing from "../assets/pricing.jpeg";
+import lg from "../assets/clog1.png";
+import samsung from "../assets/clog2.png";
+import daikin from "../assets/clog3.png";
+import voltas from "../assets/clog4.png";
+import bluestar from "../assets/clog5.png";
+import hitachi from "../assets/clog6.png";
+import panasonic from "../assets/clog7.png";
+import godrej from "../assets/clog8.png";
+import carrier from "../assets/clog9.png";
+import whirlpool from "../assets/clog10.png";
+import lg1 from "../assets/clog11.png";
+import samsung1 from "../assets/clog12.png";
+import daikin1 from "../assets/clog13.png";
+import voltas1 from "../assets/clog14.png";
+import bluestar1 from "../assets/clog15.png";
 
 /* =======================
    HERO SLIDES
@@ -19,7 +34,23 @@ const heroSlides = [
   { img: ac4, text: "Expert Technicians You Can Trust" },
   { img: ac5, text: "Gas Refilling with Proper Pressure Check" },
 ];
-
+const brandLogos = [
+  lg,
+  samsung,
+  daikin,
+  voltas,
+  bluestar,
+  hitachi,
+  panasonic,
+  godrej,
+  carrier,
+  whirlpool,
+  lg1,
+  samsung1,
+  daikin1,
+  voltas1,
+  bluestar1,
+];
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
@@ -95,21 +126,16 @@ export default function Home() {
           {heroSlides.map((slide, i) => (
             <div
               key={`slide-${i}`}
-              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${
-                i === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
+              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${i === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
             >
-              {/* Background fill (no blank space) */}
               <img
                 src={slide.img}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
               />
-
-              {/* Dark overlay */}
               <div className="absolute inset-0 bg-black/40" />
 
-              {/* Foreground image (fully visible) */}
               <div className="relative z-10 w-full h-full flex items-center justify-center">
                 <img
                   src={slide.img}
@@ -118,7 +144,6 @@ export default function Home() {
                 />
               </div>
 
-              {/* Text */}
               <div className="absolute inset-0 z-20 flex items-end justify-center pb-10">
                 <div className="bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl mx-4">
                   <h3 className="text-white text-lg md:text-3xl font-semibold text-center">
@@ -140,18 +165,36 @@ export default function Home() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {SERVICES.map((s) => (
-            <div key={s.id} className="card p-6">
-              <h3 className="text-lg font-semibold text-sky-500 mb-2">
-                {s.title}
-              </h3>
-              <p className="text-muted text-sm mb-4">{s.desc}</p>
+            <div
+              key={s.id}
+              className="card overflow-hidden flex flex-col hover:shadow-xl transition"
+            >
+              {/* IMAGE */}
+              <div className="h-40 w-full overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
+              </div>
 
-              <button
-                onClick={() => setSelectedService(s)}
-                className="text-sky-500 hover:text-sky-600 font-medium"
-              >
-                Learn more →
-              </button>
+              {/* CONTENT */}
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg font-semibold text-sky-500 mb-2">
+                  {s.title}
+                </h3>
+
+                <p className="text-muted text-sm mb-4">
+                  {s.desc}
+                </p>
+
+                <button
+                  onClick={() => setSelectedService(s)}
+                  className="mt-auto text-sky-500 hover:text-sky-600 font-medium"
+                >
+                  Learn more →
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -184,6 +227,40 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* ================= BRANDS WE SERVICE ================= */}
+<section className="py-20 bg-transparent border-t border-[var(--border-soft)] overflow-hidden">
+  <div className="container mb-10 text-center">
+    <h3 className="text-3xl font-semibold text-main">
+      Brands We Service
+    </h3>
+    <p className="text-muted mt-2">
+      We repair and service all major AC brands
+    </p>
+  </div>
+
+  {/* SLIDER */}
+  <div className="relative w-full overflow-hidden">
+    <div className="flex gap-14 animate-brand-scroll hover:[animation-play-state:paused]">
+
+      {/* DUPLICATE LIST FOR INFINITE LOOP */}
+      {[...brandLogos, ...brandLogos].map((logo, i) => (
+        <div
+          key={`brand-${i}`}
+          className="flex items-center justify-center min-w-[140px]"
+        >
+          <img
+            src={logo}
+            alt="AC Brand"
+            className="h-16 md:h-20 object-contain opacity-80 hover:opacity-100 transition duration-300"
+          />
+        </div>
+      ))}
+
+    </div>
+  </div>
+</section>
+
 
       {/* ================= WHY US ================= */}
       <section className="border-y border-[var(--border-soft)] py-20">

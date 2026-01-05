@@ -194,3 +194,15 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.25s ease-out;
 }
+@keyframes brandScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-brand-scroll {
+  animation: brandScroll 30s linear infinite;
+}
