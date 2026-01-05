@@ -203,6 +203,14 @@ body {
   }
 }
 
-.animate-brand-scroll {
-  animation: brandScroll 30s linear infinite;
+.brand-track {
+  width: max-content;        /* 🔥 THIS IS THE FIX */
+  animation: brandScroll 40s linear infinite;
+}
+
+/* Mobile = slower */
+@media (max-width: 768px) {
+  .brand-track {
+    animation-duration: 65s;
+  }
 }

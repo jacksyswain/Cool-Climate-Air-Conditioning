@@ -229,7 +229,8 @@ export default function Home() {
       )}
 
       {/* ================= BRANDS WE SERVICE ================= */}
-<section className="py-20 bg-transparent border-t border-[var(--border-soft)] overflow-hidden">
+<section className="py-20 border-t border-[var(--border-soft)] overflow-hidden">
+
   <div className="container mb-10 text-center">
     <h3 className="text-3xl font-semibold text-main">
       Brands We Service
@@ -239,20 +240,18 @@ export default function Home() {
     </p>
   </div>
 
-  {/* SLIDER */}
   <div className="relative w-full overflow-hidden">
-    <div className="flex gap-14 animate-brand-scroll hover:[animation-play-state:paused]">
+    <div className="brand-track flex items-center gap-12">
 
-      {/* DUPLICATE LIST FOR INFINITE LOOP */}
       {[...brandLogos, ...brandLogos].map((logo, i) => (
         <div
           key={`brand-${i}`}
-          className="flex items-center justify-center min-w-[140px]"
+          className="flex-shrink-0 w-[120px] sm:w-[140px] md:w-[160px] flex items-center justify-center"
         >
           <img
             src={logo}
             alt="AC Brand"
-            className="h-16 md:h-20 object-contain opacity-80 hover:opacity-100 transition duration-300"
+            className="h-10 sm:h-12 md:h-16 object-contain opacity-90"
           />
         </div>
       ))}
@@ -262,14 +261,15 @@ export default function Home() {
 </section>
 
 
+
       {/* ================= WHY US ================= */}
-      <section className="border-y border-[var(--border-soft)] py-20">
+      <section className="border-y  border-[var(--border-soft)] py-20">
         <div className="container">
           <h3 className="text-3xl font-semibold text-main mb-10 text-center">
             Why Choose Us
           </h3>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4  gap-6">
             {[
               "Same Day Service",
               "Certified Technicians",
@@ -278,7 +278,7 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={`why-${i}`}
-                className="card p-6 text-center hover:scale-105 transition-transform"
+                className="card p-6 text-center hover:scale-105 bg-white transition-transform"
               >
                 <span className="text-accent font-semibold">{item}</span>
               </div>
