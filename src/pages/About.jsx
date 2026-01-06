@@ -14,7 +14,7 @@ export default function About() {
       <div className="glass p-8 max-w-3xl leading-relaxed text-gray-300 space-y-4 mb-12">
         <p>
           <strong className="text-white">{SITE.companyName}</strong> is a
-          Hyderabad-based air conditioning service provider committed to
+          Hyderabad-based air conditioning Domestic and commercial service provider committed to
           delivering reliable, affordable, and professional AC solutions for
           homes, offices, and commercial spaces.
         </p>

@@ -6,7 +6,7 @@ import contract from "../assets/contract.png"
 
 export const SITE = {
   companyName: "Cool Climate Air Conditioning",
-  tagline: "Complete AC care — from installation to repair.",
+  tagline: "Domestic And commercial Complete AC care — from installation to repair.",
   phone: "+91-8523056414",
   whatsapp: "+91-8523056414",
   email: "coolclimateairconditioning2025@gmail.com",
