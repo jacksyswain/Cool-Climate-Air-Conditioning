@@ -18,6 +18,7 @@ import daikin1 from "../assets/clog13.png";
 import voltas1 from "../assets/clog14.png";
 import bluestar1 from "../assets/clog15.png";
 
+
 /* =======================
    HERO SLIDES
 ======================= */
@@ -26,6 +27,42 @@ import ac2 from "../assets/ac2.png";
 import ac3 from "../assets/ac3.png";
 import ac4 from "../assets/ac4.png";
 import ac5 from "../assets/ac5.png";
+
+const statsData = [
+  { value: 96, suffix: "+", label: "Successful Projects" },
+  { value: 185, suffix: "+", label: "Satisfied Customers" },
+  { value: 24, suffix: "+", label: "Expert Technicians" },
+  { value: 100, suffix: "%", label: "Quality Services" },
+];
+
+function Counter({ value, suffix }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const duration = 1500; // animation time
+    const increment = Math.ceil(value / (duration / 16));
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        start = value;
+        clearInterval(timer);
+      }
+      setCount(start);
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [value]);
+
+  return (
+    <span className="text-sky-500 text-5xl font-bold">
+      {count}
+      {suffix}
+    </span>
+  );
+}
+
 
 const heroSlides = [
   { img: ac1, text: "Outdoor AC Servicing – Complete & Safe" },
@@ -51,6 +88,45 @@ const brandLogos = [
   voltas1,
   bluestar1,
 ];
+const TESTIMONIALS = [
+  {
+    name: "Akhil",
+    rating: 5,
+    text:
+      "The best AC service in Hyderabad! They responded quickly to my emergency call and had my Voltas AC up and running within hours. Transparent pricing and outstanding service.",
+  },
+  {
+    name: "Satya",
+    rating: 5,
+    text:
+      "Highly recommend this AC service for reliable and efficient work. The technician was polite and knowledgeable. My Daikin AC is working better than ever.",
+  },
+  {
+    name: "Suresh",
+    rating: 5,
+    text:
+      "Scheduled regular maintenance for my central AC. They were thorough and professional, ensuring my AC runs perfectly.",
+  },
+  {
+    name: "Lasritha",
+    rating: 4,
+    text:
+      "Installed my split AC perfectly. Team arrived on time, worked efficiently, and left no mess behind.",
+  },
+  {
+    name: "Sridhar",
+    rating: 5,
+    text:
+      "Fantastic service! Fixed my AC quickly and explained everything clearly. Very satisfied.",
+  },
+  {
+    name: "Mahesh",
+    rating: 4,
+    text:
+      "Great service at a reasonable price. My window AC noise issue was resolved quickly.",
+  },
+];
+
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
@@ -156,6 +232,34 @@ export default function Home() {
 
         </div>
       </section>
+      {/* ================= STATS / COUNTER SECTION ================= */}
+      <section className="py-20 border-t border-[var(--border-soft)]">
+      <div className="container">
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
+
+          {statsData.map((item, i) => (
+            <div key={i} className="relative">
+
+              {/* NUMBER */}
+              <Counter value={item.value} suffix={item.suffix} />
+
+              {/* LABEL */}
+              <p className="mt-3 text-lg text-white-700">
+                {item.label}
+              </p>
+
+              {/* DIVIDER (desktop only) */}
+              {i !== statsData.length - 1 && (
+                <span className="hidden md:block absolute top-1/2 right-0 h-16 w-px bg-gray-300 -translate-y-1/2" />
+              )}
+            </div>
+          ))}
+
+        </div>
+
+      </div>
+    </section>
 
       {/* ================= SERVICES ================= */}
       <section className="container py-20">
@@ -289,34 +393,71 @@ export default function Home() {
       </section>
 
       {/* ================= TESTIMONIALS ================= */}
-      <section className="container py-20 overflow-hidden">
-        <h3 className="text-3xl font-semibold text-main mb-10 text-center">
-          What Customers Say
-        </h3>
+<section className="py-20 overflow-hidden border-t border-[var(--border-soft)]">
+  <div className="container mb-10 text-center">
+    <h3 className="text-3xl font-semibold text-main">
+      What Our Customers Say
+    </h3>
+    <p className="text-muted mt-2">
+      Real feedback from satisfied customers across Hyderabad
+    </p>
+  </div>
 
-        <div className="flex gap-6 animate-marquee">
-          {[
-            "Great service and fast response",
-            "Affordable pricing and honest work",
-            "Very neat foam jet cleaning",
-            "Cooling improved immediately",
-            "Professional and polite technicians",
-            "Great service and fast response",
-            "Affordable pricing and honest work",
-            "Very neat foam jet cleaning",
-            "Cooling improved immediately",
-            "Professional and polite technicians",
-          ].map((text, i) => (
-            <div
-              key={`review-${i}`}
-              className="min-w-[280px] md:min-w-[340px] card p-6"
-            >
-              <p className="text-muted text-sm mb-3">“{text}”</p>
-              <p className="text-accent font-semibold">— Customer</p>
+  <div className="relative w-full overflow-hidden">
+    <div className="flex gap-10 animate-marquee">
+
+      {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+       <div
+  key={`testimonial-${i}`}
+  className="
+    flex-shrink-0
+    w-[85vw]
+    sm:w-[65vw]
+    md:w-[40vw]
+    lg:w-[25vw]
+    h-[260px]
+    md:h-[300px]
+    lg:h-[280px]
+    bg-white
+    rounded-2xl
+    text-center
+    p-6
+    shadow-lg
+    flex
+    flex-col
+    justify-between
+  "
+>
+          {/* REVIEW TEXT */}
+          <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+            “{t.text}”
+          </p>
+
+          {/* FOOTER */}
+          <div>
+            <h4 className="font-semibold text-purple-700 text-lg mt-6">
+              {t.name}
+            </h4>
+
+            <div className="flex gap-1 mt-2 text-xl">
+              {[...Array(5)].map((_, idx) => (
+                <span
+                  key={idx}
+                  className={idx < t.rating ? "text-yellow-500" : "text-gray-300"}
+                >
+                  ★
+                </span>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-      </section>
+      ))}
+
+    </div>
+  </div>
+</section>
+
+
 
       {/* ================= CTA ================= */}
       <section className="border-t border-[var(--border-soft)] py-14">
