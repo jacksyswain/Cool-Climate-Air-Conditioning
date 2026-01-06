@@ -12,6 +12,7 @@ import panasonic from "../assets/clog7.png";
 import godrej from "../assets/clog8.png";
 import carrier from "../assets/clog9.png";
 
+
 import lg1 from "../assets/clog11.png";
 import samsung1 from "../assets/clog12.png";
 import daikin1 from "../assets/clog13.png";
