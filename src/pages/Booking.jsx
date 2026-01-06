@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { SERVICES } from "../data/siteData";
 import { SITE } from "../data/siteData";
 
@@ -11,12 +12,48 @@ export default function Booking() {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
 
   const submit = (e) => {
     e.preventDefault();
-    alert("Booking submitted successfully! Our team will contact you shortly.");
+    setLoading(true);
+
+    const templateParams = {
+      name: form.name,
+      phone: form.phone,
+      email: form.email || "Not provided",
+      service: form.service,
+      message: form.message || "No additional message",
+    };
+
+    emailjs
+      .send(
+        "service_rl0uzxj",     // 🔴 replace
+        "template_g9pt9eg",    // 🔴 replace
+        templateParams,
+        "agSzHbXTQ8GrqWGb2"      // 🔴 replace
+      )
+      .then(
+        () => {
+          alert("✅ Booking submitted successfully! Our team will contact you shortly.");
+          setForm({
+            name: "",
+            phone: "",
+            email: "",
+            service: "",
+            message: "",
+          });
+          setLoading(false);
+        },
+        (error) => {
+          console.error(error);
+          alert("❌ Something went wrong. Please try again.");
+          setLoading(false);
+        }
+      );
   };
 
   return (
@@ -44,14 +81,11 @@ export default function Booking() {
             Service Booking Form
           </h2>
 
-          <p className="text-sm text-muted mb-4">
-            Please fill in your details and select the required service.
-          </p>
-
           <input
             className="w-full p-3 rounded-lg bg-black/40 border border-white/20 text-white focus:outline-none focus:border-sky-400"
             placeholder="Full Name *"
             name="name"
+            value={form.name}
             onChange={handleChange}
             required
           />
@@ -60,6 +94,7 @@ export default function Booking() {
             className="w-full p-3 rounded-lg bg-black/40 border border-white/20 text-white focus:outline-none focus:border-sky-400"
             placeholder="Phone Number *"
             name="phone"
+            value={form.phone}
             onChange={handleChange}
             required
           />
@@ -68,12 +103,14 @@ export default function Booking() {
             className="w-full p-3 rounded-lg bg-black/40 border border-white/20 text-white focus:outline-none focus:border-sky-400"
             placeholder="Email Address"
             name="email"
+            value={form.email}
             onChange={handleChange}
           />
 
           <select
             className="w-full p-3 rounded-lg bg-black/40 border border-white/20 text-white focus:outline-none focus:border-sky-400"
             name="service"
+            value={form.service}
             onChange={handleChange}
             required
           >
@@ -90,11 +127,16 @@ export default function Booking() {
             rows="4"
             placeholder="Additional message (optional)"
             name="message"
+            value={form.message}
             onChange={handleChange}
           />
 
-          <button type="submit" className="btn-primary w-full mt-2">
-            Submit Booking
+          <button
+            type="submit"
+            className="btn-primary w-full mt-2 disabled:opacity-60"
+            disabled={loading}
+          >
+            {loading ? "Submitting..." : "Submit Booking"}
           </button>
 
           <p className="text-xs text-muted text-center">
@@ -102,28 +144,25 @@ export default function Booking() {
           </p>
         </form>
 
-        {/* ================= SUPPORT / INFO ================= */}
+        {/* ================= SUPPORT ================= */}
         <div className="card p-8 space-y-6">
-
           <h3 className="text-xl font-semibold text-main">
             Need Immediate Help?
           </h3>
 
           <p className="text-muted">
-            For urgent AC issues, feel free to contact us directly.
+            For urgent AC issues, contact us directly.
           </p>
 
           <div className="space-y-3 text-sm">
-            <p className="text-muted">
-              📞 <span className="text-main font-medium">Call:</span>{" "}
-              <a href={`tel:${SITE.phone}`} className="text-sky-400 hover:underline">
+            <p>
+              📞 <a href={`tel:${SITE.phone}`} className="text-sky-400 hover:underline">
                 {SITE.phone}
               </a>
             </p>
 
-            <p className="text-muted">
-              💬 <span className="text-main font-medium">WhatsApp:</span>{" "}
-              <a
+            <p>
+              💬 <a
                 href={`https://wa.me/${SITE.phone.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noreferrer"
@@ -134,27 +173,11 @@ export default function Booking() {
             </p>
 
             <p className="text-muted">
-              🛠️ Same-day service available in most areas
+              🛠️ Same-day service available
             </p>
           </div>
-
-          {/* TRUST POINTS */}
-          <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-sm">
-            <div className="flex items-center gap-2 text-muted">
-              ✅ Certified Technicians
-            </div>
-            <div className="flex items-center gap-2 text-muted">
-              💯 Transparent Pricing
-            </div>
-            <div className="flex items-center gap-2 text-muted">
-              ⚡ Quick Response
-            </div>
-            <div className="flex items-center gap-2 text-muted">
-              ⭐ Trusted by Customers
-            </div>
-          </div>
-
         </div>
+
       </div>
     </div>
   );
