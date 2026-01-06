@@ -12,81 +12,99 @@ export default function Navbar() {
      ${isActive ? "text-sky-400" : "text-gray-200 hover:text-white"}`;
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
-      <div className="container flex items-center justify-between h-16">
+    <>
+      {/* ================= NAVBAR ================= */}
+      <header className="fixed top-0 left-0 w-full z-[100] backdrop-blur-xl bg-black/70 border-b border-white/10">
+        <div className="container flex items-center justify-between h-16">
 
-        {/* LOGO */}
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="Cool Climate" className="h-10 w-auto" />
-          <span className="hidden sm:block font-semibold text-white">
-            Cool Climate
-          </span>
-        </Link>
-
-        {/* DESKTOP MENU */}
-        <nav className="hidden md:flex items-center gap-6">
-          <NavLink to="/" end className={navLinkClass}>Home</NavLink>
-          <NavLink to="/services" className={navLinkClass}>Services</NavLink>
-          <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
-          <NavLink to="/about" className={navLinkClass}>About</NavLink>
-          <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
-
-          <Link to="/booking" className="btn-primary ml-2">
-            Book Now
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo} alt="Cool Climate" className="h-10 w-auto" />
+            <span className="hidden sm:block font-semibold text-white">
+              Cool Climate
+            </span>
           </Link>
 
-          {/* CONTACT ICONS */}
-          <div className="flex items-center gap-3 ml-3">
-            {/* CALL */}
-            <a
-              href={`tel:${SITE.phone}`}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
-              title="Call us"
-            >
-              <Phone className="w-5 h-5 text-sky-400" />
-            </a>
+          {/* DESKTOP MENU */}
+          <nav className="hidden md:flex items-center gap-6">
+            <NavLink to="/" end className={navLinkClass}>Home</NavLink>
+            <NavLink to="/services" className={navLinkClass}>Services</NavLink>
+            <NavLink to="/pricing" className={navLinkClass}>Pricing</NavLink>
+            <NavLink to="/about" className={navLinkClass}>About</NavLink>
+            <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
 
-            {/* WHATSAPP */}
-            <a
-              href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
-              target="_blank"
-              rel="noreferrer"
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
-              title="WhatsApp"
-            >
-              <MessageCircle className="w-5 h-5 text-green-400" />
-            </a>
+            <Link to="/booking" className="btn-primary ml-2">
+              Book Now
+            </Link>
 
-            {/* EMAIL */}
-            <a
-              href={`mailto:${SITE.email}`}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
-              title="Email"
-            >
-              <Mail className="w-5 h-5 text-sky-300" />
-            </a>
-          </div>
-        </nav>
+            {/* CONTACT ICONS */}
+            <div className="flex items-center gap-3 ml-3">
+              {/* CALL */}
+              <a
+                href={`tel:${SITE.phone}`}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+                title="Call us"
+              >
+                <Phone className="w-5 h-5 text-sky-400" />
+              </a>
 
-        {/* MOBILE MENU BUTTON */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-white p-2 rounded-lg hover:bg-white/10"
-        >
-          ☰
-        </button>
-      </div>
+              {/* WHATSAPP */}
+              <a
+                href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+                title="WhatsApp"
+              >
+                <MessageCircle className="w-5 h-5 text-green-400" />
+              </a>
 
-      {/* MOBILE MENU */}
+              {/* EMAIL */}
+              <a
+                href={`mailto:${SITE.email}`}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+                title="Email"
+              >
+                <Mail className="w-5 h-5 text-sky-300" />
+              </a>
+            </div>
+          </nav>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden text-white p-2 rounded-lg hover:bg-white/10"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+        </div>
+      </header>
+
+      {/* ================= MOBILE MENU ================= */}
       {open && (
-        <div className="md:hidden bg-black/70 backdrop-blur-xl border-t border-white/10">
-          <div className="flex flex-col p-4 space-y-3 text-white">
+        <div className="fixed top-16 left-0 w-full z-[90] bg-black/80 backdrop-blur-xl border-t border-white/10 md:hidden">
+          <div className="flex flex-col p-5 space-y-4 text-white">
 
-            <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>Home</NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/services" className={navLinkClass}>Services</NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/pricing" className={navLinkClass}>Pricing</NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/about" className={navLinkClass}>About</NavLink>
-            <NavLink onClick={() => setOpen(false)} to="/contact" className={navLinkClass}>Contact</NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/" end className={navLinkClass}>
+              Home
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/services" className={navLinkClass}>
+              Services
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/pricing" className={navLinkClass}>
+              Pricing
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/about" className={navLinkClass}>
+              About
+            </NavLink>
+
+            <NavLink onClick={() => setOpen(false)} to="/contact" className={navLinkClass}>
+              Contact
+            </NavLink>
 
             <Link
               to="/booking"
@@ -96,8 +114,8 @@ export default function Navbar() {
               Book Now
             </Link>
 
-            {/* MOBILE CONTACT ICONS */}
-            <div className="flex gap-4 pt-3">
+            {/* MOBILE CONTACT LINKS */}
+            <div className="flex gap-6 pt-4 border-t border-white/10">
               <a href={`tel:${SITE.phone}`} className="text-sky-400">📞 Call</a>
               <a
                 href={`https://wa.me/${SITE.whatsapp.replace(/\D/g, "")}`}
@@ -114,6 +132,10 @@ export default function Navbar() {
           </div>
         </div>
       )}
-    </header>
+
+      {/* ================= SPACER ================= */}
+      {/* Prevent content hiding behind fixed navbar */}
+      <div className="h-16" />
+    </>
   );
 }

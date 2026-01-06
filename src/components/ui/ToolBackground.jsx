@@ -1,30 +1,63 @@
 import React from "react";
 
-const flakes = Array.from({ length: 35 });
+import {
+  Wrench,
+  Hammer,
+  Settings,
+  Cog,
+  Gauge,
+  Fan,
+  Snowflake,
+  Flame,
+  Zap,
+  Droplets,
+  Package,
+  ShieldCheck,
+  ClipboardList,
+  Cpu,
+  Activity,
+  PenTool,
+  Layers,
+  Box,
+} from "lucide-react";
 
-export default function CoolBackground() {
+const icons = [
+  Wrench,
+  Hammer,
+  Settings,
+  Cog,
+  Gauge,
+  Fan,
+  Snowflake,
+  Flame,
+  Zap,
+  Droplets,
+  Package,
+  ShieldCheck,
+  ClipboardList,
+  Cpu,
+  Activity,
+  PenTool,
+  Layers,
+  Box,
+];
+
+export default function ToolBackground() {
   return (
     <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-      {flakes.map((_, i) => {
-        const size = Math.random() * 6 + 6; // 6–12px
-        const left = Math.random() * 100;
-        const delay = Math.random() * 10;
-        const duration = 18 + Math.random() * 12;
-
-        return (
-          <span
-            key={i}
-            className="cool-flake"
-            style={{
-              left: `${left}%`,
-              width: `${size}px`,
-              height: `${size}px`,
-              animationDelay: `${delay}s`,
-              animationDuration: `${duration}s`,
-            }}
-          />
-        );
-      })}
+      {icons.map((Icon, i) => (
+        <Icon
+          key={i}
+          className="absolute text-sky-400/25 animate-float-slow"
+          style={{
+            top: `${(i * 7) % 90}%`,
+            left: `${(i * 13) % 90}%`,
+            width: `${42 + (i % 5) * 10}px`,
+            height: `${42 + (i % 5) * 10}px`,
+            animationDelay: `${i * 0.6}s`,
+          }}
+        />
+      ))}
     </div>
   );
 }

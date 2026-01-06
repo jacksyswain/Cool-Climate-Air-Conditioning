@@ -11,7 +11,7 @@ import hitachi from "../assets/clog6.png";
 import panasonic from "../assets/clog7.png";
 import godrej from "../assets/clog8.png";
 import carrier from "../assets/clog9.png";
-import whirlpool from "../assets/clog10.png";
+
 import lg1 from "../assets/clog11.png";
 import samsung1 from "../assets/clog12.png";
 import daikin1 from "../assets/clog13.png";
@@ -44,7 +44,7 @@ const brandLogos = [
   panasonic,
   godrej,
   carrier,
-  whirlpool,
+ 
   lg1,
   samsung1,
   daikin1,
@@ -246,7 +246,8 @@ export default function Home() {
       {[...brandLogos, ...brandLogos].map((logo, i) => (
         <div
           key={`brand-${i}`}
-          className="flex-shrink-0 w-[120px] sm:w-[140px] md:w-[160px] flex items-center justify-center"
+          className="flex-shrink-0 w-[90px] sm:w-[110px] md:w-[130px] flex items-center justify-center
+"
         >
           <img
             src={logo}
