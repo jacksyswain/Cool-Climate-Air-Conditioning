@@ -15,6 +15,7 @@ const PRICING = [
     price: "₹499",
     note: "Deep indoor cleaning, neat & hygienic",
     popular: true,
+    warranty: "30-Day Service Warranty",
   },
   {
     id: 3,
@@ -33,6 +34,7 @@ const PRICING = [
     title: "Gas Refilling",
     price: "₹2,499+",
     note: "R32 / R410A with pressure testing",
+    warranty: "2-Month Gas Warranty",
   },
 ];
 
@@ -58,20 +60,35 @@ export default function Pricing() {
             key={p.id}
             className="card p-8 text-center relative hover:scale-[1.03] transition-transform"
           >
-            {/* POPULAR BADGE */}
-            {p.popular && (
-              <span className="absolute -top-3 right-4 bg-sky-500 text-white text-xs px-3 py-1 rounded-full">
-                Most Popular
-              </span>
-            )}
+            {/* BADGES */}
+            <div className="absolute -top-3 left-4 flex gap-2">
+              {p.popular && (
+                <span className="bg-sky-500 text-white text-xs px-3 py-1 rounded-full">
+                  Most Popular
+                </span>
+              )}
 
-            <h3 className="text-xl font-semibold text-main">
+              {p.warranty && (
+                <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full">
+                  {p.warranty}
+                </span>
+              )}
+            </div>
+
+            <h3 className="text-xl font-semibold text-main mt-6">
               {p.title}
             </h3>
 
             <p className="mt-3 text-sm text-muted">
               {p.note}
             </p>
+
+            {/* WARRANTY TEXT (SECONDARY REINFORCEMENT) */}
+            {p.warranty && (
+              <p className="mt-2 text-xs text-green-500 font-medium">
+                ✔ Includes {p.warranty}
+              </p>
+            )}
 
             <p className="mt-6 text-4xl font-bold text-sky-400">
               {p.price}

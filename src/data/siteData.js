@@ -30,6 +30,9 @@ export const SERVICES = [
     longDesc:
       "Comprehensive AC Deep Cleaning & Wet Servicing designed to restore your air conditioner to peak performance while ensuring clean, healthy, and hygienic indoor air. Our thorough deep cleaning process includes complete washing of both indoor and outdoor AC units to remove stubborn dust, dirt, grease, and environmental pollutants that restrict airflow and reduce cooling efficiency. We perform detailed coil cleaning and sanitization to eliminate bacteria, mold, and unpleasant odors, helping improve air quality and cooling effectiveness.In addition, our service covers drain tray and drainage pipe cleaning to prevent water leakage, blockages, and moisture-related damage. All critical components, including filters, fan blades, and internal parts, are carefully cleaned to enhance airflow and reduce stress on the compressor. This deep AC cleaning service not only improves cooling speed and energy efficiency but also helps extend the lifespan of your air conditioner. Ideal for both split AC and window AC systems, regular deep cleaning ensures consistent cooling, lower electricity consumption, and a healthier living or working environment.",
       image:deepservicing,
+      warranty: "30 Days Service Warranty",
+
+      
   },
   
   {
@@ -49,6 +52,8 @@ export const SERVICES = [
     longDesc:
       "Professional AC Deep Cleaning and Wet Servicing designed to restore cooling performance, improve indoor air quality, and extend the life of your air conditioner. Our thorough deep cleaning service includes complete washing of both indoor and outdoor units to remove accumulated dust, dirt, grease, and pollutants that restrict airflow and reduce cooling efficiency. We carry out detailed evaporator and condenser coil cleaning and sanitization to eliminate bacteria, mold, and foul odors, ensuring clean, fresh, and hygienic air circulation inside your home or workspace.\n\nOur technicians also perform drain tray and drainage pipe cleaning to prevent water leakage, blockages, and moisture-related damage. Fan blades, filters, and internal components are carefully cleaned to optimize airflow and cooling output. This intensive wet service helps reduce energy consumption, improves cooling speed, and minimizes strain on the compressor. Regular deep AC cleaning is highly recommended before peak summer seasons to prevent breakdowns, maintain consistent cooling, and ensure safe, efficient, and long-lasting air conditioner performance for both split AC and window AC systems.",
       image:gascharg,
+
+       warranty: "60 Days Gas Warranty",
   },
  
   {

@@ -263,47 +263,67 @@ export default function Home() {
     </section>
 
       {/* ================= SERVICES ================= */}
-      <section className="container py-20">
-        <h2 className="text-3xl font-semibold text-main mb-10 text-center">
-          Our Services
-        </h2>
+      {/* ================= SERVICES ================= */}
+<section className="container py-20">
+  <h2 className="text-3xl font-semibold text-main mb-10 text-center">
+    Our Services
+  </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((s) => (
-            <div
-              key={s.id}
-              className="card overflow-hidden flex flex-col hover:shadow-xl transition"
-            >
-              {/* IMAGE */}
-              <div className="h-40 w-full overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {SERVICES.map((s) => (
+      <div
+        key={s.id}
+        className="card overflow-hidden flex flex-col hover:shadow-xl transition relative"
+      >
+        {/* IMAGE */}
+        <div className="relative h-40 w-full overflow-hidden">
+          <img
+            src={s.image}
+            alt={s.title}
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
 
-              {/* CONTENT */}
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-lg font-semibold text-sky-500 mb-2">
-                  {s.title}
-                </h3>
-
-                <p className="text-muted text-sm mb-4">
-                  {s.desc}
-                </p>
-
-                <button
-                  onClick={() => setSelectedService(s)}
-                  className="mt-auto text-sky-500 hover:text-sky-600 font-medium"
-                >
-                  Learn more →
-                </button>
-              </div>
-            </div>
-          ))}
+          {/* WARRANTY BADGE (TOP ONLY) */}
+          {s.warranty && (
+            <span className="
+              absolute
+              top-3
+              left-3
+              bg-green-600
+              text-white
+              text-xs
+              font-semibold
+              px-3
+              py-1
+              rounded-full
+              shadow-md
+            ">
+              🛡 {s.warranty}
+            </span>
+          )}
         </div>
-      </section>
+
+        {/* CONTENT */}
+        <div className="p-6 flex flex-col flex-1">
+          <h3 className="text-lg font-semibold text-sky-500 mb-2">
+            {s.title}
+          </h3>
+
+          <p className="text-muted text-sm mb-4">
+            {s.desc}
+          </p>
+
+          <button
+            onClick={() => setSelectedService(s)}
+            className="mt-auto text-sky-500 hover:text-sky-600 font-medium"
+          >
+            Learn more →
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* ================= SERVICE MODAL ================= */}
       {selectedService && (
