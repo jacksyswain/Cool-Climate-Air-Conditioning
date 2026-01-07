@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ClimateBackground from "./components/ui/ClimateBackground";
+import ScrollToTop from "./components/ScrollToTop";
 
 import Home from "./pages/Home";
 import Services from "./pages/Services";
@@ -16,7 +17,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <ClimateBackground />
-
+       <ScrollToTop />
       <Navbar />
 
       <main className="relative z-10">
