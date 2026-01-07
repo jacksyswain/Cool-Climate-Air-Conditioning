@@ -420,7 +420,7 @@ export default function Home() {
       What Our Customers Say
     </h3>
     <p className="text-muted mt-2">
-      Real feedback from satisfied customers across Hyderabad
+      Feedback from satisfied customers across Hyderabad
     </p>
   </div>
 
