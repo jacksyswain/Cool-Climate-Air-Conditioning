@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { SITE, SERVICES } from "../data/siteData";
 import pricing from "../assets/pricing.jpeg";
@@ -28,6 +28,43 @@ import ac2 from "../assets/ac2.png";
 import ac3 from "../assets/ac3.png";
 import ac4 from "../assets/ac4.png";
 import ac5 from "../assets/ac5.png";
+const HOME_PRICING = [
+   {
+    id: 1,
+    title: "Split AC – Inspection",
+    price: "₹249",
+    note: "Basic AC check-up & diagnosis",
+  },
+  {
+    id: 2,
+    title: "Split AC – Foam Jet Servicing",
+    price: "₹499",
+    note: "Deep indoor cleaning, neat & hygienic",
+    popular: true,
+    warranty: "30-Day Service Warranty",
+  },
+  {
+    id: 3,
+    title: "Split AC – Installation",
+    price: "₹1,499",
+    note: "Professional split AC installation",
+  },
+  {
+    id: 4,
+    title: "Split AC – Uninstallation",
+    price: "₹799+",
+    note: "Safe dismantling without damage",
+  },
+  {
+    id: 5,
+    title: "Split AC – Gas Refilling",
+    price: "₹2,499+",
+    note: "R32 / R410A gas with pressure testing",
+    warranty: "2-Month Gas Warranty",
+  },
+
+];
+
 
 const statsData = [
   { value: 96, suffix: "+", label: "Successful Projects" },
@@ -35,6 +72,7 @@ const statsData = [
   { value: 24, suffix: "+", label: "Expert Technicians" },
   { value: 100, suffix: "%", label: "Quality Services" },
 ];
+
 
 function Counter({ value, suffix }) {
   const [count, setCount] = useState(0);
@@ -82,7 +120,7 @@ const brandLogos = [
   panasonic,
   godrej,
   carrier,
- 
+
   lg1,
   samsung1,
   daikin1,
@@ -131,6 +169,21 @@ const TESTIMONIALS = [
 export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedService, setSelectedService] = useState(null);
+  const [priceIndex, setPriceIndex] = useState(0);
+
+const isMobile = window.innerWidth < 768;
+const cardsPerView = isMobile ? 1 : 3;
+
+const maxIndex = HOME_PRICING.length - cardsPerView;
+
+const nextPrice = () => {
+  setPriceIndex((prev) => Math.min(prev + 1, maxIndex));
+};
+
+const prevPrice = () => {
+  setPriceIndex((prev) => Math.max(prev - 1, 0));
+};
+
 
   /* Auto slider */
   useEffect(() => {
@@ -235,57 +288,56 @@ export default function Home() {
       </section>
       {/* ================= STATS / COUNTER SECTION ================= */}
       <section className="py-20 border-t border-[var(--border-soft)]">
-      <div className="container">
+        <div className="container">
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
 
-          {statsData.map((item, i) => (
-            <div key={i} className="relative">
+            {statsData.map((item, i) => (
+              <div key={i} className="relative">
 
-              {/* NUMBER */}
-              <Counter value={item.value} suffix={item.suffix} />
+                {/* NUMBER */}
+                <Counter value={item.value} suffix={item.suffix} />
 
-              {/* LABEL */}
-              <p className="mt-3 text-lg text-white-700">
-                {item.label}
-              </p>
+                {/* LABEL */}
+                <p className="mt-3 text-lg text-white-700">
+                  {item.label}
+                </p>
 
-              {/* DIVIDER (desktop only) */}
-              {i !== statsData.length - 1 && (
-                <span className="hidden md:block absolute top-1/2 right-0 h-16 w-px bg-gray-300 -translate-y-1/2" />
-              )}
-            </div>
-          ))}
+                {/* DIVIDER (desktop only) */}
+                {i !== statsData.length - 1 && (
+                  <span className="hidden md:block absolute top-1/2 right-0 h-16 w-px bg-gray-300 -translate-y-1/2" />
+                )}
+              </div>
+            ))}
+
+          </div>
 
         </div>
-
-      </div>
-    </section>
+      </section>
 
       {/* ================= SERVICES ================= */}
-      {/* ================= SERVICES ================= */}
-<section className="container py-20">
-  <h2 className="text-3xl font-semibold text-main mb-10 text-center">
-    Our Services
-  </h2>
+      <section className="container py-20">
+        <h2 className="text-3xl font-semibold text-main mb-10 text-center">
+          Our Services
+        </h2>
 
-  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-    {SERVICES.map((s) => (
-      <div
-        key={s.id}
-        className="card overflow-hidden flex flex-col hover:shadow-xl transition relative"
-      >
-        {/* IMAGE */}
-        <div className="relative h-40 w-full overflow-hidden">
-          <img
-            src={s.image}
-            alt={s.title}
-            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {SERVICES.map((s) => (
+            <div
+              key={s.id}
+              className="card overflow-hidden flex flex-col hover:shadow-xl transition relative"
+            >
+              {/* IMAGE */}
+              <div className="relative h-40 w-full overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                />
 
-          {/* WARRANTY BADGE (TOP ONLY) */}
-          {s.warranty && (
-            <span className="
+                {/* WARRANTY BADGE (TOP ONLY) */}
+                {s.warranty && (
+                  <span className="
               absolute
               top-3
               left-3
@@ -298,32 +350,32 @@ export default function Home() {
               rounded-full
               shadow-md
             ">
-              🛡 {s.warranty}
-            </span>
-          )}
+                    🛡 {s.warranty}
+                  </span>
+                )}
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-lg font-semibold text-sky-500 mb-2">
+                  {s.title}
+                </h3>
+
+                <p className="text-muted text-sm mb-4">
+                  {s.desc}
+                </p>
+
+                <button
+                  onClick={() => setSelectedService(s)}
+                  className="mt-auto text-sky-500 hover:text-sky-600 font-medium"
+                >
+                  Learn more →
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-
-        {/* CONTENT */}
-        <div className="p-6 flex flex-col flex-1">
-          <h3 className="text-lg font-semibold text-sky-500 mb-2">
-            {s.title}
-          </h3>
-
-          <p className="text-muted text-sm mb-4">
-            {s.desc}
-          </p>
-
-          <button
-            onClick={() => setSelectedService(s)}
-            className="mt-auto text-sky-500 hover:text-sky-600 font-medium"
-          >
-            Learn more →
-          </button>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
+      </section>
 
       {/* ================= SERVICE MODAL ================= */}
       {selectedService && (
@@ -353,38 +405,161 @@ export default function Home() {
         </div>
       )}
 
-      {/* ================= BRANDS WE SERVICE ================= */}
+{/* ================= HOME PRICING SLIDER ================= */}
 <section className="py-20 border-t border-[var(--border-soft)] overflow-hidden">
-
-  <div className="container mb-10 text-center">
+  <div className="container text-center mb-12">
     <h3 className="text-3xl font-semibold text-main">
-      Brands We Service
+      Transparent Pricing
     </h3>
-    <p className="text-muted mt-2">
-      We repair and service all major AC brands
+    <p className="text-muted mt-2 max-w-2xl mx-auto">
+      Honest pricing with no hidden charges.  
+      Split, Ductable & Cassette AC services handled by experts.
     </p>
   </div>
 
-  <div className="relative w-full overflow-hidden">
-    <div className="brand-track flex items-center gap-12">
-
-      {[...brandLogos, ...brandLogos].map((logo, i) => (
+  {/* SLIDER */}
+  <div className="relative overflow-hidden">
+    <div
+      className="flex transition-transform duration-500 ease-in-out"
+      style={{
+        transform: `translateX(-${priceIndex * (100 / cardsPerView)}%)`,
+      }}
+    >
+      {HOME_PRICING.map((p) => (
         <div
-          key={`brand-${i}`}
-          className="flex-shrink-0 w-[90px] sm:w-[110px] md:w-[130px] flex items-center justify-center
-"
+          key={p.id}
+          className="flex-shrink-0 w-full md:w-1/3 px-4"
         >
-          <img
-            src={logo}
-            alt="AC Brand"
-            className="h-10 sm:h-12 md:h-16 object-contain opacity-90"
-          />
+          <div
+            className="
+              card
+              p-8
+              text-center
+              relative
+              hover:scale-[1.03]
+              transition-transform
+              h-[440px]
+              flex
+              flex-col
+              justify-between
+            "
+          >
+            {/* BADGES */}
+            <div className="absolute -top-3 left-4 flex gap-2">
+              {p.popular && (
+                <span className="bg-sky-500 text-white text-xs px-3 py-1 rounded-full">
+                  Most Popular
+                </span>
+              )}
+              {p.warranty && (
+                <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full">
+                  {p.warranty}
+                </span>
+              )}
+            </div>
+
+            {/* CONTENT */}
+            <div className="pt-6">
+              <h3 className="text-xl font-semibold text-main mt-6">
+                {p.title}
+              </h3>
+
+              <p className="mt-3 text-sm text-muted">
+                {p.note}
+              </p>
+
+              {p.warranty && (
+                <p className="mt-2 text-xs text-green-500 font-medium">
+                  ✔ Includes {p.warranty}
+                </p>
+              )}
+
+              {p.trBased ? (
+                <p className="mt-6 text-lg font-semibold text-sky-400">
+                  Pricing depends on TR & site conditions
+                </p>
+              ) : (
+                <p className="mt-6 text-4xl font-bold text-sky-400">
+                  {p.price}
+                </p>
+              )}
+
+              <p className="text-xs text-muted mt-2">
+                *Final pricing confirmed after site inspection
+              </p>
+            </div>
+
+            {/* ACTION */}
+            <Link to="/booking" className="btn-primary mt-6">
+              Book Now
+            </Link>
+          </div>
         </div>
       ))}
-
     </div>
   </div>
+
+  {/* CONTROLS */}
+  <div className="flex justify-center gap-6 mt-12">
+    <button
+      onClick={prevPrice}
+      disabled={priceIndex === 0}
+      className="px-6 py-3 rounded-xl border border-white/20 text-main disabled:opacity-40"
+    >
+      ◀ Previous
+    </button>
+
+    <button
+      onClick={nextPrice}
+      disabled={priceIndex === maxIndex}
+      className="px-6 py-3 rounded-xl border border-white/20 text-main disabled:opacity-40"
+    >
+      Next ▶
+    </button>
+  </div>
+
+  {/* VIEW ALL */}
+  <div className="text-center mt-10">
+    <Link to="/pricing" className="btn-outline">
+      View Full Pricing
+    </Link>
+  </div>
 </section>
+
+
+
+      {/* ================= BRANDS WE SERVICE ================= */}
+      <section className="py-20 border-t border-[var(--border-soft)] overflow-hidden">
+
+        <div className="container mb-10 text-center">
+          <h3 className="text-3xl font-semibold text-main">
+            Brands We Service
+          </h3>
+          <p className="text-muted mt-2">
+            We repair and service all major AC brands
+          </p>
+        </div>
+
+        <div className="relative w-full overflow-hidden">
+          <div className="brand-track flex items-center gap-12">
+
+            {[...brandLogos, ...brandLogos].map((logo, i) => (
+              <div
+                key={`brand-${i}`}
+                className="flex-shrink-0 w-[90px] sm:w-[110px] md:w-[130px] flex items-center justify-center
+"
+              >
+                <img
+                  src={logo}
+                  alt="AC Brand"
+                  className="h-10 sm:h-12 md:h-16 object-contain opacity-90"
+                />
+              </div>
+            ))}
+
+          </div>
+        </div>
+      </section>
 
 
 
@@ -414,23 +589,23 @@ export default function Home() {
       </section>
 
       {/* ================= TESTIMONIALS ================= */}
-<section className="py-20 overflow-hidden border-t border-[var(--border-soft)]">
-  <div className="container mb-10 text-center">
-    <h3 className="text-3xl font-semibold text-main">
-      What Our Customers Say
-    </h3>
-    <p className="text-muted mt-2">
-      Feedback from satisfied customers across Hyderabad
-    </p>
-  </div>
+      <section className="py-20 overflow-hidden border-t border-[var(--border-soft)]">
+        <div className="container mb-10 text-center">
+          <h3 className="text-3xl font-semibold text-main">
+            What Our Customers Say
+          </h3>
+          <p className="text-muted mt-2">
+            Feedback from satisfied customers across Hyderabad
+          </p>
+        </div>
 
-  <div className="relative w-full overflow-hidden">
-    <div className="flex gap-10 animate-marquee">
+        <div className="relative w-full overflow-hidden">
+          <div className="flex gap-10 animate-marquee">
 
-      {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
-       <div
-  key={`testimonial-${i}`}
-  className="
+            {[...TESTIMONIALS, ...TESTIMONIALS].map((t, i) => (
+              <div
+                key={`testimonial-${i}`}
+                className="
     flex-shrink-0
     w-[85vw]
     sm:w-[65vw]
@@ -448,35 +623,35 @@ export default function Home() {
     flex-col
     justify-between
   "
->
-          {/* REVIEW TEXT */}
-          <p className="text-gray-700 text-sm md:text-base leading-relaxed">
-            “{t.text}”
-          </p>
+              >
+                {/* REVIEW TEXT */}
+                <p className="text-gray-700 text-sm md:text-base leading-relaxed">
+                  “{t.text}”
+                </p>
 
-          {/* FOOTER */}
-          <div>
-            <h4 className="font-semibold text-purple-700 text-lg mt-6">
-              {t.name}
-            </h4>
+                {/* FOOTER */}
+                <div>
+                  <h4 className="font-semibold text-purple-700 text-lg mt-6">
+                    {t.name}
+                  </h4>
 
-            <div className="flex gap-1 mt-2 text-xl">
-              {[...Array(5)].map((_, idx) => (
-                <span
-                  key={idx}
-                  className={idx < t.rating ? "text-yellow-500" : "text-gray-300"}
-                >
-                  ★
-                </span>
-              ))}
-            </div>
+                  <div className="flex gap-1 mt-2 text-xl">
+                    {[...Array(5)].map((_, idx) => (
+                      <span
+                        key={idx}
+                        className={idx < t.rating ? "text-yellow-500" : "text-gray-300"}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+
           </div>
         </div>
-      ))}
-
-    </div>
-  </div>
-</section>
+      </section>
 
 
 
