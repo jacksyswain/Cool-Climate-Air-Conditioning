@@ -445,7 +445,7 @@ const prevPrice = () => {
             "
           >
             {/* BADGES */}
-            <div className="absolute -top-3 left-4 flex gap-2">
+            <div className="absolute -top-0 left-4 flex gap-2">
               {p.popular && (
                 <span className="bg-sky-500 text-white text-xs px-3 py-1 rounded-full">
                   Most Popular
