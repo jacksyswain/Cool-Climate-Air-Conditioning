@@ -484,9 +484,7 @@ const prevPrice = () => {
                 </p>
               )}
 
-              <p className="text-xs text-muted mt-2">
-                *Final pricing confirmed after site inspection
-              </p>
+             
             </div>
 
             {/* ACTION */}

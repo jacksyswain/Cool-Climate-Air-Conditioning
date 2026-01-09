@@ -147,10 +147,6 @@ export default function Pricing() {
               </p>
             )}
 
-            <p className="text-xs text-muted mt-2">
-              *Final pricing confirmed after site inspection
-            </p>
-
             {/* ACTIONS */}
             <div className="mt-8 flex flex-col gap-3">
               <Link to="/booking" className="btn-primary">
