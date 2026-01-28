@@ -10,7 +10,7 @@ export const SITE = {
   phone: "+91-8523056414",
   whatsapp: "+91-8523056414",
   email: "coolclimateairconditioning2025@gmail.com",
-  address: "4-116, Gautam Nagar, Balanagar, Hyderabad, Telangana, 500042",
+  address: "7-4-119, Mahadevi Ngar, Balanagar, Hyderabad, Telangana, 500011 , landmark: ooposite BBR Hospital line",
   serviceAreas: ["Yousufguda","panjaguta", "Areas", "Alwal" ,"Kompally" ,"Secunderabad", "medchal", "Gachibowli", "Madhapur" ,"Kondapur" ,"hitech City" ,"Banjara hill" ,"Kukatpally" ,"Miyapur" ,"Jubilee hills", "Ameerpet", "moosapet",],
 };
 
