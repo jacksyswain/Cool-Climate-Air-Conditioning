@@ -42,7 +42,8 @@ export default function Footer() {
             Contact
           </h4>
 
-          <p className="text-sm mb-2">📞 {SITE.phone}</p>
+          <p className="text-sm mb-2">📞 {SITE.phone} </p>
+          <p className="text-sm mb-2">📞 {SITE.backup} </p>
           <p className="text-sm mb-2">✉️ {SITE.email}</p>
 
           <a

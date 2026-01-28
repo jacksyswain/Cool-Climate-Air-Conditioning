@@ -8,6 +8,7 @@ export const SITE = {
   companyName: "Cool Climate Air Conditioning",
   tagline: "Domestic And commercial Complete AC care from installation to repair.",
   phone: "+91-8523056414",
+  backup:"+91-8686786215",
   whatsapp: "+91-8523056414",
   email: "coolclimateairconditioning2025@gmail.com",
   address: "7-4-119, Mahadevi Ngar, Balanagar, Hyderabad, Telangana, 500011 , landmark: opposite BBR Hospital line or behind Hotel Samrat",
