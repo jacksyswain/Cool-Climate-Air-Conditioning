@@ -12,7 +12,7 @@ const PRICING = [
   }, {
     id: 2,
     title: "Split AC – Normal Servicing",
-    price: "₹249",
+    price: "₹449",
     note: "Basic AC check-up & diagnosis",
   },
   {
