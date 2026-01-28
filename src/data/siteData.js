@@ -12,7 +12,7 @@ export const SITE = {
   whatsapp: "+91-8523056414",
   email: "coolclimateairconditioning2025@gmail.com",
   address: "7-4-119, Mahadevi Ngar, Balanagar, Hyderabad, Telangana, 500011 , landmark: opposite BBR Hospital line or behind Hotel Samrat",
-  serviceAreas: ["Balanagar","Bowenpally","Suchitra","tirumalagiri","Yousufguda","panjaguta","LingamPally","Begumpet","NanakramGuda","MalkajGiri","Uppal","Hayat Nagar", "Alwal" ,"Kompally" ,"Secunderabad", "medchal", "Gachibowli", "Madhapur" ,"Kondapur" ,"hitech City" ,"Banjara hill" ,"Kukatpally" ,"Miyapur" ,"Jubilee hills", "Ameerpet", "moosapet","IDPL",],
+  serviceAreas: ["Balanagar","Bowenpally","Suchitra","Tirumalagiri","Yousufguda","panjaguta","LingamPally","Begumpet","NanakramGuda","MalkajGiri","Uppal","Hayat Nagar", "Alwal" ,"Kompally" ,"Secunderabad", "Medchal", "Gachibowli", "Madhapur" ,"Kondapur" ,"Hitech City" ,"Banjara hill" ,"Kukatpally" ,"Miyapur" ,"Jubilee hills", "Ameerpet", "Moosapet","IDPL",],
 };
 
 export const SERVICES = [
