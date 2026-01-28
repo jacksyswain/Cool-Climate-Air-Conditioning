@@ -9,9 +9,14 @@ const PRICING = [
     title: "Split AC – Inspection",
     price: "₹249",
     note: "Basic AC check-up & diagnosis",
+  }, {
+    id: 2,
+    title: "Split AC – Normal Servicing",
+    price: "₹249",
+    note: "Basic AC check-up & diagnosis",
   },
   {
-    id: 2,
+    id: 3,
     title: "Split AC – Foam Jet Servicing",
     price: "₹499",
     note: "Deep indoor cleaning, neat & hygienic",
@@ -19,19 +24,19 @@ const PRICING = [
     warranty: "30-Day Service Warranty",
   },
   {
-    id: 3,
+    id: 4,
     title: "Split AC – Installation",
     price: "₹1,499",
     note: "Professional split AC installation",
   },
   {
-    id: 4,
+    id: 5,
     title: "Split AC – Uninstallation",
     price: "₹799+",
     note: "Safe dismantling without damage",
   },
   {
-    id: 5,
+    id: 6,
     title: "Split AC – Gas Refilling",
     price: "₹2,499+",
     note: "R32 / R410A gas with pressure testing",
@@ -40,20 +45,20 @@ const PRICING = [
 
   /* ================= DUCTABLE AC ================= */
   {
-    id: 6,
+    id: 7,
     title: "Ductable AC – Installation",
     note: "Commercial & industrial ductable AC installation",
     trBased: true,
   },
   {
-    id: 7,
+    id: 8,
     title: "Ductable AC – Foam Jet Servicing",
     note: "Deep duct & blower cleaning",
     warranty: "30-Day Service Warranty",
     trBased: true,
   },
   {
-    id: 8,
+    id: 9,
     title: "Ductable AC – Gas Refilling",
     note: "Gas charging with leak & pressure test",
     warranty: "2-Month Gas Warranty",
@@ -62,20 +67,20 @@ const PRICING = [
 
   /* ================= CASSETTE AC ================= */
   {
-    id: 9,
+    id: 10,
     title: "Cassette AC – Installation",
     note: "False ceiling cassette AC installation",
     trBased: true,
   },
   {
-    id: 10,
+    id: 11,
     title: "Cassette AC – Foam Jet Servicing",
     note: "Four-way airflow deep cleaning",
     warranty: "30-Day Service Warranty",
     trBased: true,
   },
   {
-    id: 11,
+    id: 12,
     title: "Cassette AC – Gas Refilling",
     note: "High-capacity gas charging",
     warranty: "2-Month Gas Warranty",
