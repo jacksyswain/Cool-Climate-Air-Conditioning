@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Phone, Mail, MessageCircle } from "lucide-react";
+import { Phone, Mail } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import logo from "../assets/logo.png";
 import { SITE } from "../data/siteData";
 
@@ -56,7 +57,7 @@ export default function Navbar() {
                 className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
                 title="WhatsApp"
               >
-                <MessageCircle className="w-5 h-5 text-green-400" />
+                <FaWhatsapp className="w-5 h-5 text-green-400" />
               </a>
 
               {/* EMAIL */}
@@ -134,7 +135,6 @@ export default function Navbar() {
       )}
 
       {/* ================= SPACER ================= */}
-      {/* Prevent content hiding behind fixed navbar */}
       <div className="h-16" />
     </>
   );

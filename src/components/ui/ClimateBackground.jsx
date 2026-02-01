@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import SnowLayer from "./SnowLayer";
 import FogLayer from "./FogLayer";
-import { Phone, Mail, MessageCircle, Sliders } from "lucide-react";
+import { Phone, Mail, Sliders } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 import { SITE } from "../../data/siteData";
 
 export default function ClimateBackground() {
@@ -49,7 +50,7 @@ export default function ClimateBackground() {
             title="WhatsApp"
             className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center hover:scale-110 transition"
           >
-            <MessageCircle className="w-5 h-5 text-white" />
+            <FaWhatsapp className="w-5 h-5 text-white" />
           </a>
 
           {/* EMAIL */}
