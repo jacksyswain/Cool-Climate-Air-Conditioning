@@ -11,7 +11,7 @@ export const SITE = {
   backup:"+91-8686786215",
   whatsapp: "+91-8523056414",
   email: "coolclimateairconditioning2025@gmail.com",
-  address: "7-4-119, Madhavi Nagar, Balanagar, Hyderabad, Telangana, 500011 , landmark: Lane opposite Bbr hospital or behind Hotel Samrat",
+  address: "7-4-119, Madhavi Nagar, Balanagar, Hyderabad, Telangana, 500011 , landmark: Lane opposite Bbr hospital or behind Hotel Samrat .",
   serviceAreas: ["Balanagar","Bowenpally","Suchitra","Tirumalagiri","Yousufguda","panjaguta","LingamPally","Begumpet","NanakramGuda","MalkajGiri","Uppal","Hayat Nagar", "Alwal" ,"Kompally" ,"Secunderabad", "Medchal", "Gachibowli", "Madhapur" ,"Kondapur" ,"Hitech City" ,"Banjara hill" ,"Kukatpally" ,"Miyapur" ,"Jubilee hills", "Ameerpet", "Moosapet","IDPL",],
 };
 
