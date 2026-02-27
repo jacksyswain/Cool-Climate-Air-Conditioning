@@ -1,6 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import ACRepairHyderabad from "./pages/ACRepairHyderabad";
+import ACRepairKukatpally from "./pages/ACRepairKukatpally";
+import ACServiceHyderabad from "./pages/ACServiceHyderabad";
+import ACGasFillingHyderabad from "./pages/ACGasFillingHyderabad";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -18,7 +21,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-hidden">
       <ClimateBackground />
-       <ScrollToTop />
+      <ScrollToTop />
       <Navbar />
 
       <main className="relative z-10">
@@ -28,6 +31,9 @@ export default function App() {
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
           <Route path="/ac-repair-hyderabad" element={<ACRepairHyderabad />} />
+          <Route path="/ac-repair-kukatpally" element={<ACRepairKukatpally />} />
+          <Route path="/ac-service-hyderabad" element={<ACServiceHyderabad />} />
+          <Route path="/ac-gas-filling-hyderabad" element={<ACGasFillingHyderabad />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/booking" element={<Booking />} />
         </Routes>
