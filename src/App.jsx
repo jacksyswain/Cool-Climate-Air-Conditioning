@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import ACRepairHyderabad from "./pages/ACRepairHyderabad";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
+          <Route path="/ac-repair-hyderabad" element={<ACRepairHyderabad />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/booking" element={<Booking />} />
         </Routes>
