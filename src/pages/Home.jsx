@@ -29,7 +29,7 @@ import ac3 from "../assets/ac3.png";
 import ac4 from "../assets/ac4.png";
 import ac5 from "../assets/ac5.png";
 const HOME_PRICING = [
-   {
+  {
     id: 1,
     title: "Split AC – Inspection",
     price: "₹249",
@@ -171,18 +171,18 @@ export default function Home() {
   const [selectedService, setSelectedService] = useState(null);
   const [priceIndex, setPriceIndex] = useState(0);
 
-const isMobile = window.innerWidth < 768;
-const cardsPerView = isMobile ? 1 : 3;
+  const isMobile = window.innerWidth < 768;
+  const cardsPerView = isMobile ? 1 : 3;
 
-const maxIndex = HOME_PRICING.length - cardsPerView;
+  const maxIndex = HOME_PRICING.length - cardsPerView;
 
-const nextPrice = () => {
-  setPriceIndex((prev) => Math.min(prev + 1, maxIndex));
-};
+  const nextPrice = () => {
+    setPriceIndex((prev) => Math.min(prev + 1, maxIndex));
+  };
 
-const prevPrice = () => {
-  setPriceIndex((prev) => Math.max(prev - 1, 0));
-};
+  const prevPrice = () => {
+    setPriceIndex((prev) => Math.max(prev - 1, 0));
+  };
 
 
   /* Auto slider */
@@ -215,15 +215,8 @@ const prevPrice = () => {
               servicing, repair & maintenance.
             </p>
 
-            {/* ✅ SEO INTERNAL LINK ADDED HERE */}
-            <div className="mt-4">
-              <Link 
-                to="/ac-repair-hyderabad"
-                className="text-[#C89F2A] underline font-medium"
-              >
-                AC Repair in Hyderabad
-              </Link>
-            </div>
+
+
 
             <div className="mt-8 flex gap-4">
               <Link to="/booking" className="btn-primary">
@@ -234,6 +227,7 @@ const prevPrice = () => {
               </a>
             </div>
           </div>
+
 
           {/* RIGHT PRICING CARD */}
           <div className="relative h-80 md:h-[22rem] rounded-xl overflow-hidden shadow-lg">
@@ -260,43 +254,64 @@ const prevPrice = () => {
         </div>
       </section>
 
-      {/* ================= FULL WIDTH IMAGE SLIDER ================= */}
-      <section className="w-full py-12 flex justify-center">
-        <div className="relative w-full md:w-[80%] h-screen md:h-[70vh] overflow-hidden md:rounded-2xl shadow-xl">
+      
+{/* ================= SERVICE LOCATIONS ================= */}
+<section className="py-20 border-t border-[var(--border-soft)]">
+  <div className="container">
 
-          {heroSlides.map((slide, i) => (
-            <div
-              key={`slide-${i}`}
-              className={`absolute inset-0 transition-opacity duration-[2500ms] ease-in-out ${i === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-            >
-              <img
-                src={slide.img}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover blur-md scale-110"
-              />
-              <div className="absolute inset-0 bg-black/40" />
+    {/* Heading (same pattern as other sections) */}
+    <div className="text-center mb-12">
+      <h3 className="text-3xl font-semibold text-main">
+        Service Locations
+      </h3>
+      <p className="text-muted mt-2">
+        AC repair, servicing, installation & gas filling across Hyderabad.
+      </p>
+    </div>
 
-              <div className="relative z-10 w-full h-full flex items-center justify-center">
-                <img
-                  src={slide.img}
-                  alt={slide.text}
-                  className="max-w-full max-h-full object-contain"
-                />
-              </div>
+    {/* Grid — same width logic as Services section */}
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-              <div className="absolute inset-0 z-20 flex items-end justify-center pb-10">
-                <div className="bg-black/60 backdrop-blur-md px-6 py-4 rounded-xl mx-4">
-                  <h3 className="text-white text-lg md:text-3xl font-semibold text-center">
-                    {slide.text}
-                  </h3>
-                </div>
-              </div>
-            </div>
-          ))}
+      <Link
+        to="/ac-repair-hyderabad"
+        className="card p-6 text-center hover:shadow-xl transition"
+      >
+        <h4 className="text-lg font-semibold text-main">
+          AC Repair in Hyderabad
+        </h4>
+      </Link>
 
-        </div>
-      </section>
+      <Link
+        to="/ac-repair-kukatpally"
+        className="card p-6 text-center hover:shadow-xl transition"
+      >
+        <h4 className="text-lg font-semibold text-main">
+          AC Repair in Kukatpally
+        </h4>
+      </Link>
+
+      <Link
+        to="/ac-service-hyderabad"
+        className="card p-6 text-center hover:shadow-xl transition"
+      >
+        <h4 className="text-lg font-semibold text-main">
+          AC Service in Hyderabad
+        </h4>
+      </Link>
+
+      <Link
+        to="/ac-gas-filling-hyderabad"
+        className="card p-6 text-center hover:shadow-xl transition"
+      >
+        <h4 className="text-lg font-semibold text-main">
+          AC Gas Filling in Hyderabad
+        </h4>
+      </Link>
+
+    </div>
+
+  </div>
+</section>
       {/* ================= STATS / COUNTER SECTION ================= */}
       <section className="py-20 border-t border-[var(--border-soft)]">
         <div className="container">
@@ -416,33 +431,33 @@ const prevPrice = () => {
         </div>
       )}
 
-{/* ================= HOME PRICING SLIDER ================= */}
-<section className="py-20 border-t border-[var(--border-soft)] overflow-hidden">
-  <div className="container text-center mb-12">
-    <h3 className="text-3xl font-semibold text-main">
-      Transparent Pricing
-    </h3>
-    <p className="text-muted mt-2 max-w-2xl mx-auto">
-      Honest pricing with no hidden charges.  
-      Split, Ductable & Cassette AC services handled by experts.
-    </p>
-  </div>
+      {/* ================= HOME PRICING SLIDER ================= */}
+      <section className="py-20 border-t border-[var(--border-soft)] overflow-hidden">
+        <div className="container text-center mb-12">
+          <h3 className="text-3xl font-semibold text-main">
+            Transparent Pricing
+          </h3>
+          <p className="text-muted mt-2 max-w-2xl mx-auto">
+            Honest pricing with no hidden charges.
+            Split, Ductable & Cassette AC services handled by experts.
+          </p>
+        </div>
 
-  {/* SLIDER */}
-  <div className="relative overflow-hidden">
-    <div
-      className="flex transition-transform duration-500 ease-in-out"
-      style={{
-        transform: `translateX(-${priceIndex * (100 / cardsPerView)}%)`,
-      }}
-    >
-      {HOME_PRICING.map((p) => (
-        <div
-          key={p.id}
-          className="flex-shrink-0 w-full md:w-1/3 px-4"
-        >
+        {/* SLIDER */}
+        <div className="relative overflow-hidden">
           <div
-            className="
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{
+              transform: `translateX(-${priceIndex * (100 / cardsPerView)}%)`,
+            }}
+          >
+            {HOME_PRICING.map((p) => (
+              <div
+                key={p.id}
+                className="flex-shrink-0 w-full md:w-1/3 px-4"
+              >
+                <div
+                  className="
               card
               p-8
               text-center
@@ -454,86 +469,86 @@ const prevPrice = () => {
               flex-col
               justify-between
             "
-          >
-            {/* BADGES */}
-            <div className="absolute -top-0 left-4 flex gap-2">
-              {p.popular && (
-                <span className="bg-sky-500 text-white text-xs px-3 py-1 rounded-full">
-                  Most Popular
-                </span>
-              )}
-              {p.warranty && (
-                <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full">
-                  {p.warranty}
-                </span>
-              )}
-            </div>
+                >
+                  {/* BADGES */}
+                  <div className="absolute -top-0 left-4 flex gap-2">
+                    {p.popular && (
+                      <span className="bg-sky-500 text-white text-xs px-3 py-1 rounded-full">
+                        Most Popular
+                      </span>
+                    )}
+                    {p.warranty && (
+                      <span className="bg-green-500 text-white text-xs px-3 py-1 rounded-full">
+                        {p.warranty}
+                      </span>
+                    )}
+                  </div>
 
-            {/* CONTENT */}
-            <div className="pt-6">
-              <h3 className="text-xl font-semibold text-main mt-6">
-                {p.title}
-              </h3>
+                  {/* CONTENT */}
+                  <div className="pt-6">
+                    <h3 className="text-xl font-semibold text-main mt-6">
+                      {p.title}
+                    </h3>
 
-              <p className="mt-3 text-sm text-muted">
-                {p.note}
-              </p>
+                    <p className="mt-3 text-sm text-muted">
+                      {p.note}
+                    </p>
 
-              {p.warranty && (
-                <p className="mt-2 text-xs text-green-500 font-medium">
-                  ✔ Includes {p.warranty}
-                </p>
-              )}
+                    {p.warranty && (
+                      <p className="mt-2 text-xs text-green-500 font-medium">
+                        ✔ Includes {p.warranty}
+                      </p>
+                    )}
 
-              {p.trBased ? (
-                <p className="mt-6 text-lg font-semibold text-sky-400">
-                  Pricing depends on TR & site conditions
-                </p>
-              ) : (
-                <p className="mt-6 text-4xl font-bold text-sky-400">
-                  {p.price}
-                </p>
-              )}
+                    {p.trBased ? (
+                      <p className="mt-6 text-lg font-semibold text-sky-400">
+                        Pricing depends on TR & site conditions
+                      </p>
+                    ) : (
+                      <p className="mt-6 text-4xl font-bold text-sky-400">
+                        {p.price}
+                      </p>
+                    )}
 
-             
-            </div>
 
-            {/* ACTION */}
-            <Link to="/booking" className="btn-primary mt-6">
-              Book Now
-            </Link>
+                  </div>
+
+                  {/* ACTION */}
+                  <Link to="/booking" className="btn-primary mt-6">
+                    Book Now
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
 
-  {/* CONTROLS */}
-  <div className="flex justify-center gap-6 mt-12">
-    <button
-      onClick={prevPrice}
-      disabled={priceIndex === 0}
-      className="px-6 py-3 rounded-xl border border-white/20 text-main disabled:opacity-40"
-    >
-      ◀ Previous
-    </button>
+        {/* CONTROLS */}
+        <div className="flex justify-center gap-6 mt-12">
+          <button
+            onClick={prevPrice}
+            disabled={priceIndex === 0}
+            className="px-6 py-3 rounded-xl border border-white/20 text-main disabled:opacity-40"
+          >
+            ◀ Previous
+          </button>
 
-    <button
-      onClick={nextPrice}
-      disabled={priceIndex === maxIndex}
-      className="px-6 py-3 rounded-xl border border-white/20 text-main disabled:opacity-40"
-    >
-      Next ▶
-    </button>
-  </div>
+          <button
+            onClick={nextPrice}
+            disabled={priceIndex === maxIndex}
+            className="px-6 py-3 rounded-xl border border-white/20 text-main disabled:opacity-40"
+          >
+            Next ▶
+          </button>
+        </div>
 
-  {/* VIEW ALL */}
-  <div className="text-center mt-10">
-    <Link to="/pricing" className="btn-outline">
-      View Full Pricing
-    </Link>
-  </div>
-</section>
+        {/* VIEW ALL */}
+        <div className="text-center mt-10">
+          <Link to="/pricing" className="btn-outline">
+            View Full Pricing
+          </Link>
+        </div>
+      </section>
 
 
 
